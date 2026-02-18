@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM rust:1.83.0-slim-bookworm AS rusthound-builder
+FROM rust:slim-bookworm AS rusthound-builder
 
 WORKDIR /usr/src/rusthound
 
