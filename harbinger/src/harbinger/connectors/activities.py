@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import shlex
 
 import aiodocker
 import structlog
@@ -260,7 +261,7 @@ async def create_new_c2(
             "RestartPolicy": {"Name": "unless-stopped"},
         }
         if command:
-            config["Cmd"] = command
+            config["Cmd"] = shlex.split(command)
 
         container = await docker.containers.create(
             config=config,
